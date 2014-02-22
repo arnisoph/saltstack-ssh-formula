@@ -29,7 +29,7 @@ Available states
 .. contents::
     :local:
 
- ``ssh``
+``ssh``
 --------
 
 Includes ``ssh.server`` and ``ssh.client``
