@@ -1,0 +1,26 @@
+{% load_yaml as rawmap %}
+Debian:
+  client:
+    pkgs:
+      - openssh-client
+    config:
+      ssh_config:
+        path: /etc/ssh/ssh_config
+  server:
+    pkgs:
+      - openssh-server
+    service:
+      name: ssh
+    config:
+      sshd_config:
+        path: /etc/ssh/sshd_config
+Redhat:
+  client:
+    pkgs:
+      - openssh
+  server:
+    pkgs:
+      - openssh-server
+    service:
+      name: sshd
+{% endload %}
