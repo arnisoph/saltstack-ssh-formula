@@ -18,9 +18,15 @@ Redhat:
   client:
     pkgs:
       - openssh
+    config:
+      ssh_config:
+        path: /etc/ssh/ssh_config
   server:
     pkgs:
       - openssh-server
     service:
       name: sshd
+    config:
+      sshd_config:
+        path: /etc/ssh/sshd_config
 {% endload %}

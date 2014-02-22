@@ -12,7 +12,7 @@ NOTICE BEFORE YOU USE
 TODO
 ====
 
-* None
+* manage known hosts in ssh.keys
 
 Instructions
 ============
@@ -32,7 +32,10 @@ Available states
 ``ssh``
 --------
 
-Includes ``ssh.server`` and ``ssh.client``
+Includes:
+* ``ssh.server``
+* ``ssh.client``
+* ``ssh.keys``
 
 ``ssh.client``
 --------------
@@ -43,6 +46,11 @@ Installs and configures ssh client
 --------------
 
 Installs and configures ssh server
+
+``ssh.keys``
+--------------
+
+Manages keys of users and known hosts
 
 Additional resources
 ====================
