@@ -14,10 +14,10 @@ Debian:
     config:
       sshd_config:
         path: /etc/ssh/sshd_config
-Redhat:
+RedHat:
   client:
     pkgs:
-      - openssh
+      - openssh-clients
     config:
       ssh_config:
         path: /etc/ssh/ssh_config
