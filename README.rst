@@ -30,33 +30,31 @@ Available states
     :local:
 
 ``ssh``
---------
+-------
 
 Includes:
 
 * ``ssh.server``
 * ``ssh.client``
-* ``ssh.keys``
 
 ``ssh.client``
 --------------
-
 Installs and configures ssh client
 
 ``ssh.server``
 --------------
-
 Installs and configures ssh server
 
-``ssh.keys``
---------------
-
-Manages keys of users and known hosts
 
 Additional resources
 ====================
 
 * based on https://github.com/saltstack-formulas/openssh-formula/
+
+Templates
+=========
+
+Some states/ commands may refer to templates which aren't included in the files folder (``template/files``). Take a look at ``contrib/`` (if present) for e.g. template examples and place them in separate file roots (e.g. Git repository, refer to `GitFS <http://docs.saltstack.com/topics/tutorials/gitfs.html>`_) in your Salt master config.
 
 Formula Dependencies
 ====================
@@ -86,4 +84,4 @@ OS Compatibility
 Tested with:
 
 * GNU/ Linux Debian Wheezy
-* CentOS 6
+* CentOS 6 (partly)

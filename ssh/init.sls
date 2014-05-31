@@ -3,4 +3,4 @@
 include:
   - ssh.server
   - ssh.client
-  - ssh.keys
+  - ssh._keys

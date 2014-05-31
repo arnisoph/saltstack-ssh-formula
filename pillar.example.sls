@@ -9,6 +9,9 @@ ssh:
         sshd_config:
           template_path: False
   keys:
+    manage:
+      users:
+        - root
     auth:
       - user: root
         ensure: present

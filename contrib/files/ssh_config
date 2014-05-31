@@ -1,0 +1,6 @@
+Host *
+    Port {{ salt['pillar.get']('ssh:client:settings:port', 22) }}
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
