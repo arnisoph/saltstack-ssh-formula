@@ -1,3 +1,5 @@
+#!jinja|yaml
+
 include:
   - ssh.server
   - ssh.client

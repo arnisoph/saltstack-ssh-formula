@@ -1,3 +1,5 @@
+#!jinja|yaml
+
 {% from "ssh/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('ssh:lookup')) %}
 
