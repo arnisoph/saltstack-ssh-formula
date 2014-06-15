@@ -6,10 +6,7 @@
 ssh-server:
   pkg:
     - installed
-    - pkgs:
-{% for p in datamap.server.pkgs %}
-      - {{ p }}
-{% endfor %}
+    - pkgs: {{ datamap.server.pkgs }}
   service:
     - running
     - name: {{ datamap.server.service.name }}
