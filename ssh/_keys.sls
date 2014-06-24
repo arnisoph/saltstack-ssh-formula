@@ -31,7 +31,7 @@ managekeypair_{{ u }}:
 
 {% set hpk = datamap.client.hostspubkey|default({}) %}
 
-{% if hpk.collect|default(True) %}
+{% if hpk.collect|default(False) %}
   {% for k, v in salt['publish.publish'](hpk.tgt|default('*'), hpk.fun|default('grains.get'), hpk.arg|default('fqdn'), hpk.exprform|default('glob')).items() if v|length > 0 %}
 hostpubkey_{{ k }}:
   ssh_known_hosts:
