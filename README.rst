@@ -76,7 +76,7 @@ Salt Compatibility
 
 Tested with:
 
-* 2014.1.4
+* Salt Development Version
 
 OS Compatibility
 ================
