@@ -3,7 +3,7 @@
 {% from "ssh/defaults.yaml" import rawmap with context %}
 {% set datamap = salt['grains.filter_by'](rawmap, merge=salt['pillar.get']('ssh:lookup')) %}
 
-ssh-server:
+ssh_server:
   pkg:
     - installed
     - pkgs: {{ datamap.server.pkgs }}
@@ -14,7 +14,7 @@ ssh-server:
     - watch:
       - file: sshd_config
     - require:
-      - pkg: ssh-server
+      - pkg: ssh_server
 
 sshd_config:
   file:

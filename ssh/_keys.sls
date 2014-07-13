@@ -39,6 +39,7 @@ hostpubkey_{{ k }}:
     - name: {{ v }}
     - port: {{ salt['pillar.get']('ssh:client:settings:port', 22) }}
     - enc: ssh-rsa
+    - hash_hostname: False
   {% endfor %}
 {% endif %}
 
