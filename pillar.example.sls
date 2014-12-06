@@ -11,7 +11,7 @@ ssh:
   keys:
     manage:
       users:
-        - root
+        root: {}
     auth:
       - user: root
         ensure: present

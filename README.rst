@@ -2,6 +2,9 @@
 ssh-formula
 ===========
 
+.. image:: https://api.flattr.com/button/flattr-badge-large.png
+    :target: https://flattr.com/submit/auto?user_id=bechtoldt&url=https%3A%2F%2Fgithub.com%2Fbechtoldt%2Fsaltstack-ssh-formula
+
 Salt Stack Formula to set up and configure OpenSSH
 
 NOTICE BEFORE YOU USE
@@ -31,11 +34,7 @@ Available states
 
 ``ssh``
 -------
-
-Includes:
-
-* ``ssh.server``
-* ``ssh.client``
+Includes the other SLS files
 
 ``ssh.client``
 --------------
@@ -76,7 +75,8 @@ Salt Compatibility
 
 Tested with:
 
-* Salt Development Version (should work with 2014.1.x mostly too)
+* 2014.1
+* 2014.7
 
 OS Compatibility
 ================

@@ -19,7 +19,8 @@ ssh_auth_{{ a.user|default('root') }}_{{ a.name[-20:] }}:
   {% endif %}
 {% endfor %}
 
-{% for u in salt['pillar.get']('ssh:keys:manage:users', []) %}
+{% for k, v in salt['pillar.get']('ssh:keys:manage:users', {})|dictsort %}
+  {% set u = v.name|default(k) %}
   {% if salt['file.file_exists'](salt['user.info'](u).home ~ '/.ssh/id_rsa.pub') == False %}
 managekeypair_{{ u }}:
   cmd:
@@ -42,5 +43,3 @@ hostpubkey_{{ k }}:
     - hash_hostname: False
   {% endfor %}
 {% endif %}
-
-{# TODO: require rng-tools running? #}
