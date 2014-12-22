@@ -12,6 +12,10 @@ ssh:
     manage:
       users:
         root: {}
+        user_backup_keypair:
+          name: user
+          prvfile: /home/user/.ssh/id_rsa_backup
+          pubfile: /home/user/.ssh/id_rsa_backup.pub
     auth:
       - user: root
         ensure: present

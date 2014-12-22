@@ -20,13 +20,16 @@ ssh_auth_{{ a.user|default('root') }}_{{ a.name[-20:] }}:
 {% endfor %}
 
 {% for k, v in salt['pillar.get']('ssh:keys:manage:users', {})|dictsort %}
-  {% set u = v.name|default(k) %}
-  {% if salt['file.file_exists'](salt['user.info'](u).home ~ '/.ssh/id_rsa.pub') == False %}
-managekeypair_{{ u }}:
+  {% set user = v.name|default(k) %}
+  {% set prvfile = v.prvfile|default(salt['user.info'](user).home ~ '/.ssh/id_rsa') %}
+  {% set pubfile = v.pubfile|default(salt['user.info'](user).home ~ '/.ssh/id_rsa.pub') %}
+
+  {% if salt['file.file_exists'](pubfile) == False %}
+managekeypair_{{ user }}:
   cmd:
     - run
-    - name: /usr/bin/ssh-keygen -q -b 8192 -t rsa -f {{ salt['user.info'](u).home ~ '/.ssh/id_rsa' }} -N '' -C ''
-    - user: {{ u }}
+    - name: /usr/bin/ssh-keygen -q -b {{ v.keysize|default(8192) }} -t rsa -f {{ prvfile }} -N '' -C ''
+    - user: {{ user }}
   {% endif %}
 {% endfor %}
 
