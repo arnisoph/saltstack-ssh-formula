@@ -25,7 +25,7 @@ ssh_auth_{{ a.user|default('root') }}_{{ a.name[-20:] }}:
   {% set pubfile = v.pubfile|default(salt['user.info'](user).home ~ '/.ssh/id_rsa.pub') %}
 
   {% if salt['file.file_exists'](pubfile) == False %}
-managekeypair_{{ user }}:
+managekeypair_{{ user }}_{{ prvfile }}:
   cmd:
     - run
     - name: /usr/bin/ssh-keygen -q -b {{ v.keysize|default(8192) }} -t rsa -f {{ prvfile }} -N '' -C ''
