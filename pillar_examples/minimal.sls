@@ -18,7 +18,8 @@ ssh:
             Port 64546
     known_hosts:
       hosts:
-        name: github.com
+        github:
+          name: github.com
     auth:
       users:
         root:
