@@ -1,0 +1,26 @@
+---
+defaults:
+  domain: ssh.local.arnoldbechtoldt.com
+  base_box: DEV_Debian_78_salt_arbe_20152_git-virtualbox-v0.4-30-gba01b54.box
+  base_box_basedir: ../../../vagrant-devenv/shared/boxes
+  osfam: debian
+  synced_folders:
+    - src: assets/scripts/provision
+      dst: /vagrant/scripts
+    - src: ../../../salt-modules/_modules
+      dst: /vagrant/salt/_modules
+    - src: ../../../salt-modules/_states
+      dst: /vagrant/salt/_states
+    - src: ../shared
+      dst: /vagrant/share
+  provision:
+    - name: basic
+    - name: saltstack_install_bootstrap
+    - name: saltstack_formulas
+      formulas:
+        - name: ssh
+          base_dir: ../..
+    - name: saltstack_config
+    - name: saltstack_services
+nodes:
+  client1: {}

@@ -1,0 +1,37 @@
+kernel:
+  Linux:
+    client:
+      config:
+        manage:
+          - ssh_config
+        ssh_config:
+          path: /etc/ssh/ssh_config
+          template_path: salt://ssh/files/ssh_config
+      hostspubkey: {}
+    server:
+      pkgs:
+        - openssh-server
+      config:
+        manage:
+          - sshd_config
+        sshd_config:
+          path: /etc/ssh/sshd_config
+          template_path: salt://ssh/files/sshd_config
+    keyfiles:
+      manage: {}
+    auth: {}
+os_family:
+  Debian:
+    client:
+      pkgs:
+        - openssh-client
+    server:
+      service:
+        name: ssh
+  RedHat:
+    client:
+      pkgs:
+        - openssh-clients
+    server:
+      service:
+        name: sshd
