@@ -33,6 +33,25 @@ ssh_clientconfig_{{ config.user|default(user) }}:
   {% endif %}
 {% endfor %}
 
+{% for id, host in datamap.known_hosts|default({})|dictsort %}
+ssh_known_host_{{ host.name }}:
+  ssh_known_hosts:
+    - {{ host.ensure|default('present') }}
+    - name: {{ host.name }}
+    - user: {{ host.user|default('root') }}
+    - port: {{ host.port|default(22) }}
+    - hash_hostname: {{ host.hash_hostname|default(True) }}
+  {% if 'enc' in host %}
+    - enc: {{ host.enc }}
+  {% endif %}
+  {% if 'config' in host %}
+    - config: {{ host.config }}
+  {% endif %}
+  {% if 'fingerprint' in host %}
+    - fingerprint: {{ host.fingerprint }}
+  {% endif %}
+{% endfor %}
+
 {% for k, v in datamap.keyfiles.users|default({})|dictsort %}
   {% set user = v.name|default(k) %}
   {% set prvfile = v.prvfile|default(salt['user.info'](user).home ~ '/.ssh/id_rsa') %}

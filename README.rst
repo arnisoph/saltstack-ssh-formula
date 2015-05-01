@@ -64,7 +64,6 @@ TODO
 * table/ matrix: os/salt compatibility (dedicated file)
 * add list of available states
 * add tests
-* manage known hosts in ssh.keys
 
 
 Additional Resources

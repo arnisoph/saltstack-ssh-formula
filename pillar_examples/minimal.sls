@@ -16,6 +16,9 @@ ssh:
         contents: |
           Host vcpmb1014.domain.de
             Port 64546
+    known_hosts:
+      hosts:
+        name: github.com
     auth:
       users:
         root:
